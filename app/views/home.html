@@ -1,13 +1,42 @@
-<div class="page-wrapper">
+<div layout="column" style="height:100vh;" ng-cloak>
 
-  <div class="page-header">
-    <h1><img class="logo-img" src="images/logo.png" /> Welcome to FireSlack</h1>
-  </div>
+    <md-toolbar>
+        <h1 class="md-toolbar-tools"><a href="/">Linker3</a></h1>
+    </md-toolbar>
+    <section layout="row" flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="sidebar" md-disable-backdrop="true" md-whiteframe="2" >
+            <md-content data-ng-controller="SidebarCtrl" layout-padding layout="column" layout-fill layout-align="top center">
+                <h1 class="md-toolbar-tools"><a href="/">Linker3</a></h1>
+                <!--<div >-->
+                <!---->
+                <!--</div>-->
+                <!--<md-chips ng-model="ctrl.selectedVegetables" md-autocomplete-snap="" md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteDemoRequireMatch">-->
+                    <!--<md-autocomplete md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" placeholder="Search for a vegetable">-->
+                        <!--<span md-highlight-text="ctrl.searchText">{{item.name}} :: {{item.type}}</span>-->
+                    <!--</md-autocomplete>-->
+                    <!--<md-chip-template>-->
+                        <!--<span>-->
+                          <!--<strong>{{$chip.name}}</strong>-->
+                          <!--<em>({{$chip.type}})</em>-->
+                        <!--</span>-->
+                    <!--</md-chip-template>-->
+                <!--</md-chips>-->
+                <!--<p>-->
+                    <!--This sidenav is locked open on your device. To go back to the default behavior,-->
+                    <!--narrow your display.-->
+                <!--</p>-->
+                <p>test</p>
+            </md-content>
+        </md-sidenav>
 
-  <p class="text-center">
-    <a ui-sref="login" class="btn btn-lg btn-default">Login</a> or <a ui-sref="register" class="btn btn-lg btn-primary">Register</a>
-  </p>
+        <md-content data-ng-controller="GraphCtrl">
 
-  <p>FireSlack is an open source <a href="https://slack.com" target="_blank">Slack</a> clone built using <a href="https://www.firebase.com" target="_blank">Firebase</a>'s <a href="https://www.firebase.com/docs/web/libraries/angular/" target="_blank">AngularFire</a> library. Learn how to create this app from scratch with the <a href="https://thinkster.io/angularfire-slack-tutorial/" target="_blank">Thinkster.io tutorial</a>!</p>
-
+        </md-content>
+        <md-button class="md-fab"  id="sidebar-button" aria-label="Open Graph Settings" data-ng-click="openSidebar();">
+            <md-icon class="material-icons step">settings</md-icon>
+            <md-tooltip md-direction="right">
+                Open Graph Settings
+            </md-tooltip>
+        </md-button>
+    </section>
 </div>
