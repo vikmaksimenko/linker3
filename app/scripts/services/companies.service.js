@@ -1,9 +1,9 @@
 angular.module("diplomaApp")
     .factory('Companies', function($firebaseArray, $firebaseObject, FirebaseUrl){
-        var companiesRef = new Firebase(FirebaseUrl+'companies');
-        var companies = $firebaseArray(companiesRef);
+        var o = {};
+        
+        o.companiesRef = new Firebase(FirebaseUrl+'companies');
+        o.companies = $firebaseArray(o.companiesRef);
 
-        console.log("in factory");
-
-        return companies;
-    });
+        return o;
+    }); 

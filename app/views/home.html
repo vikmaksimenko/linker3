@@ -5,27 +5,23 @@
     </md-toolbar>
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left" md-component-id="sidebar" md-disable-backdrop="true" md-whiteframe="2" >
-            <md-content data-ng-controller="SidebarCtrl" layout-padding layout="column" layout-fill layout-align="top center">
+            <md-content data-ng-controller="SidebarCtrl" layout-padding layout="column" layout-fill layout-align="top">
                 <h1 class="md-toolbar-tools"><a href="/">Linker3</a></h1>
-                <!--<div >-->
-                <!---->
-                <!--</div>-->
-                <!--<md-chips ng-model="ctrl.selectedVegetables" md-autocomplete-snap="" md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteDemoRequireMatch">-->
-                    <!--<md-autocomplete md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" placeholder="Search for a vegetable">-->
-                        <!--<span md-highlight-text="ctrl.searchText">{{item.name}} :: {{item.type}}</span>-->
-                    <!--</md-autocomplete>-->
-                    <!--<md-chip-template>-->
-                        <!--<span>-->
-                          <!--<strong>{{$chip.name}}</strong>-->
-                          <!--<em>({{$chip.type}})</em>-->
-                        <!--</span>-->
-                    <!--</md-chip-template>-->
-                <!--</md-chips>-->
-                <!--<p>-->
-                    <!--This sidenav is locked open on your device. To go back to the default behavior,-->
-                    <!--narrow your display.-->
-                <!--</p>-->
-                <p>test</p>
+                <md-input-container md-no-float="true">
+                    <label>Company</label>
+                    <md-select data-ng-model="selectedCompanies" multiple="true" md-selected-text="convertSelectionToString(selectedCompanies)" md-on-close="onCompaniesSelected();">
+                        <md-option data-ng-repeat="company in companies" data-ng-value="company">{{company.name}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Position</label>
+                    <md-select data-ng-model="selectedPositions" multiple="true" data-ng-disabled="positionsForCompanies.length == 0" md-selected-text="convertSelectionToString(selectedPositions)">
+                        <md-option data-ng-repeat="position in positionsForCompanies" data-ng-value="position">
+                            <strong>{{ position.company_name }}</strong>:
+                            <i>{{position.name}}</i>
+                        </md-option>
+                    </md-select>
+                </md-input-container>
             </md-content>
         </md-sidenav>
 

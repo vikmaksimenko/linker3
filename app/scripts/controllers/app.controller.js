@@ -1,8 +1,8 @@
 angular.module('diplomaApp')
-    .controller('AppCtrl', function($scope, $state, Auth, companies, $mdSidenav){
-        console.log(companies);
+    .controller('AppCtrl', function($scope, $state, Auth, $mdSidenav){
+        // console.log(companies);
 
-        console.log("AppCtrl");
+        // console.log("AppCtrl");
 
         $scope.openSidebar = function() {
             $mdSidenav('sidebar').toggle();

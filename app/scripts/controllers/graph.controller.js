@@ -1,4 +1,4 @@
 angular.module('diplomaApp')
-    .controller('SidebarCtrl', function($scope){
+    .controller('GraphCtrl', function($scope){
 
     });
