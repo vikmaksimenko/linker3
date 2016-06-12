@@ -85,9 +85,106 @@
     }
     
   },
-  "universities": {},
-  "faculty": {},
-  "specialities": {},
-  "subject": {},
-  "themes": {}
+  "universities": {
+    "onpu": {
+      "name": "ONPU",
+      "info": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ullam laborum blanditiis facere enim autem, alias vero distinctio, laboriosam sint explicabo facilis, earum illo omnis rerum quas. Dolore, deserunt, ad!",
+      "faculties": [
+        "onpu_ics"
+      ]
+    }
+  },
+  "faculties": {
+    "onpu_ics": {
+      "name": "onpu_ics",
+      "university": "onpu",
+      "info": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ullam laborum blanditiis facere enim autem, alias vero distinctio, laboriosam sint explicabo facilis, earum illo omnis rerum quas. Dolore, deserunt, ad!",
+      "specialities": [
+        "onpu_ics_spec1"
+      ]
+    }
+  },
+  "specialities": {
+    "onpu_ics_sp": {
+      "name": "onpu_ics_sp",
+      "faculty": "onpu_ics",
+      "info": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ullam laborum blanditiis facere enim autem, alias vero distinctio, laboriosam sint explicabo facilis, earum illo omnis rerum quas. Dolore, deserunt, ad!",
+      "subjects": [
+        "onpu_ics_sp_op",
+        "onpu_ics_sp_oop",
+        "onpu_ics_sp_mop"
+      ]
+    },
+    "onpu_ics_sp_without_subjects": {
+      "name": "onpu_ics_sp",
+      "faculty": "onpu_ics",
+      "info": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ullam laborum blanditiis facere enim autem, alias vero distinctio, laboriosam sint explicabo facilis, earum illo omnis rerum quas. Dolore, deserunt, ad!",
+      "themes": [
+        "theme1",
+        "theme2",
+        "theme3"
+      ]
+    }
+  },
+  "subjects": {
+    "onpu_ics_sp_op": {
+      "name": "onpu_ics_sp",
+      "speciality": "onpu_ics_sp",
+      "info": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ullam laborum blanditiis facere enim autem, alias vero distinctio, laboriosam sint explicabo facilis, earum illo omnis rerum quas. Dolore, deserunt, ad!",
+      "themes": [
+        "theme1",
+        "theme2",
+        "theme3"
+      ]
+    },
+    "onpu_ics_sp_oop": {
+      "name": "onpu_ics_sp",
+      "speciality": "onpu_ics_sp",
+      "info": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ullam laborum blanditiis facere enim autem, alias vero distinctio, laboriosam sint explicabo facilis, earum illo omnis rerum quas. Dolore, deserunt, ad!",
+      "themes": [
+        "theme4",
+        "theme5",
+        "theme6"
+      ]
+    },
+    "onpu_ics_sp_mop": {
+      "name": "onpu_ics_sp",
+      "speciality": "onpu_ics_sp",
+      "info": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum ullam laborum blanditiis facere enim autem, alias vero distinctio, laboriosam sint explicabo facilis, earum illo omnis rerum quas. Dolore, deserunt, ad!",
+      "themes": [
+        "theme7",
+        "theme8",
+        "theme9"
+      ]
+    }
+  },
+  "themes": {
+    "theme1": {
+      "name": "theme1"
+    },
+    "theme2": {
+      "name": "theme2"
+    },
+    "theme3": {
+      "name": "theme3"
+    },
+    "theme4": {
+      "name": "theme4"
+    },
+    "theme5": {
+      "name": "theme5"
+    },
+    "theme6": {
+      "name": "theme6"
+    },
+    "theme7": {
+      "name": "theme7"
+    },
+    "theme8": {
+      "name": "theme8"
+    },
+    "theme9": {
+      "name": "theme9"
+    }
+  }
 }

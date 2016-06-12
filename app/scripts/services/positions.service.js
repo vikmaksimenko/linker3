@@ -1,5 +1,5 @@
 angular.module("diplomaApp")
-    .factory('Positions', function($firebaseArray, $firebaseObject, FirebaseUrl){
+    .factory('Positions', function($firebaseArray, FirebaseUrl){
         var o = {};
         
         o.positionsRef = new Firebase(FirebaseUrl+'positions');
@@ -8,8 +8,6 @@ angular.module("diplomaApp")
         o.getPositionsByCompanies = function(companies) {
             var positions = [];
             for(var i = 0; i < companies.length; i++) {
-                console.log(companies[i].$id);
-
                 o.positionsRef.orderByChild("company").equalTo(companies[i].$id).on("value", function (snapshot) {
                     tmp = snapshot.val();
                     for (var property in tmp) {
