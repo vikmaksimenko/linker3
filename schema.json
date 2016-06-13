@@ -33,57 +33,92 @@
       "company": "company1",
       "name": "company1_position1",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     },
     "company1_position2": {
       "company": "company1",
       "name": "company1_position2",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     },
     "company1_position3": {
       "company": "company1",
       "name": "company1_position3",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     },
     "company2_position1": {
       "company": "company2",
       "name": "company2_position1",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     },
     "company2_position2": {
       "company": "company2",
       "name": "company2_position2",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     },
     "company2_position3": {
       "company": "company2",
       "name": "company2_position3",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     },
     "company3_position1": {
       "company": "company3",
       "name": "company1_position1",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     },
     "company3_position2": {
       "company": "company3",
       "name": "company3_position1",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     },
     "company3_position3": {
       "company": "company3",
       "name": "company3_position3",
       "info": "Shiny metal position",
-      "themes": []
+      "themes": [
+        "theme8",
+        "theme9",
+        "theme10"
+      ]
     }
-    
   },
   "universities": {
     "onpu": {
@@ -185,6 +220,9 @@
     },
     "theme9": {
       "name": "theme9"
+    },
+    "theme10": {
+      "name": "theme10"
     }
   }
 }

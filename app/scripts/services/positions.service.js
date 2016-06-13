@@ -7,6 +7,7 @@ angular.module("diplomaApp")
 
         o.getPositionsByCompanies = function(companies) {
             var positions = [];
+            if(!companies || companies.length == 0) { return; }
             for(var i = 0; i < companies.length; i++) {
                 o.positionsRef.orderByChild("company").equalTo(companies[i].$id).on("value", function (snapshot) {
                     tmp = snapshot.val();

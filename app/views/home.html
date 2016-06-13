@@ -28,8 +28,6 @@
                         <md-option data-ng-repeat="university in universities" data-ng-value="university">{{university.name}}</md-option>
                     </md-select>
                 </md-input-container>
-
-
                 <md-input-container>
                     <label>Faculty</label>
                     <md-select data-ng-model="selectedFaculties" multiple="true" data-ng-disabled="facultiesForUniversities.length == 0" md-selected-text="convertSelectionToString(selectedFaculties, 'Select Faculty')" md-on-close="onFacultiesSelected();">
@@ -39,7 +37,6 @@
                         </md-option>
                     </md-select>
                 </md-input-container>
-
                 <md-input-container>
                     <label>Speciality</label>
                     <md-select data-ng-model="selectedSpecialities" multiple="true" data-ng-disabled="specialitiesForFaculties.length == 0" md-selected-text="convertSelectionToString(selectedSpecialities, 'Select Speciality')">
@@ -49,11 +46,15 @@
                         </md-option>
                     </md-select>
                 </md-input-container>
+                <md-button class="md-raised md-primary" data-ng-click="refreshGraph();">Build graph</md-button>
+                </form>
             </md-content>
         </md-sidenav>
 
-        <md-content data-ng-controller="GraphCtrl">
-            <!--Graph goes here-->
+        <md-content data-ng-controller="GraphCtrl" layout-padding layout="column" layout-fill layout-align="center">
+            <h3 class="text-center" data-ng-hide="graph.graphShowed"><md-icon class="material-icons step ng-scope">chevron_left</md-icon>Configure graph and it will be displayed here</h3>
+            <!--<p>Error with graph rendering. Contact <a href="">support</a> team</p>-->
+            <div id="graph-container" data-ng-show="graph.graphShowed"></div>
         </md-content>
 
         <md-button class="md-fab"  id="sidebar-button" aria-label="Open Graph Settings" data-ng-click="openSidebar();">

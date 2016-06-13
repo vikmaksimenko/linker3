@@ -7,6 +7,7 @@ angular.module("diplomaApp")
 
         o.getSpecialitiesByFaculty = function(faculties) {
             var specialities = [];
+            if(!faculties || faculties.length == 0) { return; }
             for(var i = 0; i < faculties.length; i++) {
                 o.specialitiesRef.orderByChild("faculty").equalTo(faculties[i].$id).on("value", function (snapshot) {
                     tmp = snapshot.val();

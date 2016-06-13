@@ -1,5 +1,5 @@
 angular.module('diplomaApp')
-    .controller('SidebarCtrl', function($scope, $mdSidenav, Companies, Positions, Universities, Faculties, Specialities){
+    .controller('SidebarCtrl', function($scope, $mdSidenav, Companies, Positions, Universities, Faculties, Specialities, Graph){
         $scope.companies = Companies.companies;
         $scope.selectedCompanies = [];
         $scope.positionsForCompanies = [];
@@ -11,7 +11,7 @@ angular.module('diplomaApp')
         $scope.selectedFaculties = [];
         $scope.specialitiesForFaculties = [];
         $scope.selectedSpecialities = [];
-        
+
 
         $scope.onCompaniesSelected = function() {
             angular.copy(Positions.getPositionsByCompanies($scope.selectedCompanies), $scope.positionsForCompanies);
@@ -27,7 +27,8 @@ angular.module('diplomaApp')
 
         $scope.convertSelectionToString = function (selection, placeholder) {
             var str = "";
-            if(!selection.length) {
+            if(!selection || !selection.length) {
+                selection = [];
                 return placeholder;
             }
 
@@ -41,4 +42,11 @@ angular.module('diplomaApp')
             }
             return str;
         };
+
+        $scope.refreshGraph = function() {
+            Graph.graphShowed = true;
+            Graph.refreshGraph();
+            Graph.graphShowed = false;
+            Graph.graphShowed = true;
+        }
     });

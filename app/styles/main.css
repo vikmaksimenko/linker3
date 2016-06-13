@@ -19,3 +19,8 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
 }
+
+#graph-container {
+    height: 100%;
+    width: 100%;
+}
