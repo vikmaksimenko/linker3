@@ -36,17 +36,14 @@ angular.module('diplomaApp')
                 str += selection[i].name + ", ";
             }
             str += selection[selection.length - 1].name;
-
-            if(str.length > 25) {
-                str = str.substring(0, 35) + "...";
-            }
             return str;
         };
 
-        $scope.refreshGraph = function() {
+        $scope.renderGraph = function() {
+            angular.copy($scope.selectedPositions, Graph.positions);
+            angular.copy($scope.selectedSpecialities, Graph.specialities);
+
             Graph.graphShowed = true;
             Graph.refreshGraph();
-            Graph.graphShowed = false;
-            Graph.graphShowed = true;
         }
     });

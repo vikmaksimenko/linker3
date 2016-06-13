@@ -13,6 +13,7 @@ angular.module("diplomaApp")
                     tmp = snapshot.val();
                     for (var property in tmp) {
                         if (tmp.hasOwnProperty(property)) {
+                            tmp[property]["$id"] = property;
                             tmp[property]["company_name"] = companies[i].name;
                             positions.push(tmp[property]);
                         }
