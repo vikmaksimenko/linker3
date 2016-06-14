@@ -120,7 +120,7 @@ angular.module("diplomaApp")
 
         function showNodeData(evt) {
             var node = evt.cyTarget;
-            cy.animate({
+                 cy.animate({
                 center: {
                     eles: node
                 }
@@ -136,7 +136,7 @@ angular.module("diplomaApp")
             } else if(node.data().type == "speciality") {
                 nodeInfo = Specialities.specialities.$getRecord(node.id());
             }
-
+            
             $mdDialog.show(
                 $mdDialog.alert()
                     .parent(angular.element(document.querySelector('#graph-controller')))
