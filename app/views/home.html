@@ -39,7 +39,7 @@
                         </md-select>
                     </md-input-container>
                     <md-input-container>
-                        <label>Position</label>
+                        <label>Position <i class="material-icons" style="font-size: 100%;color: #DD4C40;">lens</i></label>
                         <md-select data-ng-model="selectedPositions" multiple="true" data-ng-disabled="positionsForCompanies.length == 0" md-selected-text="convertSelectionToString(selectedPositions, 'Select Position')"  required="true">
                             <md-option data-ng-repeat="position in positionsForCompanies" data-ng-value="position">
                                 <strong>{{ position.company_name }}</strong>:
@@ -63,13 +63,14 @@
                         </md-select>
                     </md-input-container>
                     <md-input-container>
-                        <label>Speciality</label>
+                        <label>Speciality <i class="material-icons" style="font-size: 100%;color: #139F5A;">lens</i></label>
                         <md-select data-ng-model="selectedSpecialities" multiple="true" data-ng-disabled="specialitiesForFaculties.length == 0" md-selected-text="convertSelectionToString(selectedSpecialities, 'Select Speciality')"  required="true">
                             <md-option data-ng-repeat="speciality in specialitiesForFaculties" data-ng-value="speciality">
                                 <strong>{{ speciality.faculty_name }}</strong>:
                                 <i>{{speciality.name}}</i>
                             </md-option>
                         </md-select>
+                        <md-tooltip md-direction="right" md-autohide="false">Specialities will be displayed by green rectangles</md-tooltip>
                     </md-input-container>
                     <md-button class="md-raised md-primary" data-ng-click="renderGraph();" data-ng-disabled ="!mainForm.$dirty || mainForm.$invalid">Build graph</md-button>
                 </form>
@@ -77,7 +78,7 @@
         </md-sidenav>
 
         <md-content data-ng-controller="GraphCtrl" layout="column" layout-fill layout-align="center">
-            <h3 class="text-center" data-ng-hide="graph.graphShowed"><md-icon class="material-icons step ng-scope">chevron_left</md-icon>Configure graph and it will be displayed here</h3>
+            <h3 class="text-center" data-ng-hide="graph.graphShowed"><md-icon class="material-icons step ng-scope">arrow_back</md-icon> Configure graph and it will be displayed here</h3>
             <!--<p>Error with graph rendering. Contact <a href="">support</a> team</p>-->
             <div id="graph-container"></div>
         </md-content>
