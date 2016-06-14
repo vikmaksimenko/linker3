@@ -1,52 +1,77 @@
 <div layout="column" style="height:100vh;" ng-cloak>
 
-    <md-toolbar>
+    <md-toolbar layout="row">
         <h1 class="md-toolbar-tools"><a href="/">Linker3</a></h1>
+
+        <md-fab-speed-dial md-open="false" md-direction="left" class="md-fling">
+            <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab">
+                    <md-icon class="material-icons step">menu</md-icon>
+                    <md-tooltip md-direction="bottom" md-autohide="false">Menu</md-tooltip>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                    <md-icon class="material-icons step">help</md-icon>
+                    <md-tooltip md-direction="bottom" md-autohide="false">About</md-tooltip>
+                </md-button>
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                    <md-icon class="material-icons step">account_circle</md-icon>
+                    <md-tooltip md-direction="bottom" md-autohide="false">My Account</md-tooltip>
+                </md-button>
+                <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                    <md-icon class="material-icons step">get_app</md-icon>
+                    <md-tooltip md-direction="bottom" md-autohide="false">Export Graph</md-tooltip>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
     </md-toolbar>
+
     <section layout="row" flex>
         <md-sidenav class="md-sidenav-left" md-component-id="sidebar" md-disable-backdrop="true" md-whiteframe="2" >
             <md-content data-ng-controller="SidebarCtrl" layout-padding layout="column" layout-fill layout-align="top">
                 <h1 class="md-toolbar-tools"><a href="/">Linker3</a></h1>
-                <md-input-container md-no-float="true">
-                    <label>Company</label>
-                    <md-select data-ng-model="selectedCompanies" multiple="true" md-selected-text="convertSelectionToString(selectedCompanies, 'Select Company')" md-on-close="onCompaniesSelected();">
-                        <md-option data-ng-repeat="company in companies" data-ng-value="company">{{company.name}}</md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container>
-                    <label>Position</label>
-                    <md-select data-ng-model="selectedPositions" multiple="true" data-ng-disabled="positionsForCompanies.length == 0" md-selected-text="convertSelectionToString(selectedPositions, 'Select Position')">
-                        <md-option data-ng-repeat="position in positionsForCompanies" data-ng-value="position">
-                            <strong>{{ position.company_name }}</strong>:
-                            <i>{{position.name}}</i>
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container>
-                    <label>University</label>
-                    <md-select data-ng-model="selectedUniversities" multiple="true" md-selected-text="convertSelectionToString(selectedUniversities, 'Select University')" md-on-close="onUniversitiesSelected();">
-                        <md-option data-ng-repeat="university in universities" data-ng-value="university">{{university.name}}</md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container>
-                    <label>Faculty</label>
-                    <md-select data-ng-model="selectedFaculties" multiple="true" data-ng-disabled="facultiesForUniversities.length == 0" md-selected-text="convertSelectionToString(selectedFaculties, 'Select Faculty')" md-on-close="onFacultiesSelected();">
-                        <md-option data-ng-repeat="faculty in facultiesForUniversities" data-ng-value="faculty">
-                            <strong>{{ faculty.university_name }}</strong>:
-                            <i>{{faculty.name}}</i>
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-input-container>
-                    <label>Speciality</label>
-                    <md-select data-ng-model="selectedSpecialities" multiple="true" data-ng-disabled="specialitiesForFaculties.length == 0" md-selected-text="convertSelectionToString(selectedSpecialities, 'Select Speciality')">
-                        <md-option data-ng-repeat="speciality in specialitiesForFaculties" data-ng-value="speciality">
-                            <strong>{{ speciality.faculty_name }}</strong>:
-                            <i>{{speciality.name}}</i>
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-                <md-button class="md-raised md-primary" data-ng-click="renderGraph();">Build graph</md-button>
+                <form name="mainForm" layout="column">
+                    <md-input-container md-no-float="true">
+                        <label>Company</label>
+                        <md-select data-ng-model="selectedCompanies" multiple="true" md-selected-text="convertSelectionToString(selectedCompanies, 'Select Company')" md-on-close="onCompaniesSelected();" required="true">
+                            <md-option data-ng-repeat="company in companies" data-ng-value="company">{{company.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Position</label>
+                        <md-select data-ng-model="selectedPositions" multiple="true" data-ng-disabled="positionsForCompanies.length == 0" md-selected-text="convertSelectionToString(selectedPositions, 'Select Position')"  required="true">
+                            <md-option data-ng-repeat="position in positionsForCompanies" data-ng-value="position">
+                                <strong>{{ position.company_name }}</strong>:
+                                <i>{{position.name}}</i>
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>University</label>
+                        <md-select data-ng-model="selectedUniversities" multiple="true" md-selected-text="convertSelectionToString(selectedUniversities, 'Select University')" md-on-close="onUniversitiesSelected();" required="true">
+                            <md-option data-ng-repeat="university in universities" data-ng-value="university">{{university.name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Faculty</label>
+                        <md-select data-ng-model="selectedFaculties" multiple="true" data-ng-disabled="facultiesForUniversities.length == 0" md-selected-text="convertSelectionToString(selectedFaculties, 'Select Faculty')" md-on-close="onFacultiesSelected();" required="true">
+                            <md-option data-ng-repeat="faculty in facultiesForUniversities" data-ng-value="faculty">
+                                <strong>{{ faculty.university_name }}</strong>:
+                                <i>{{faculty.name}}</i>
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Speciality</label>
+                        <md-select data-ng-model="selectedSpecialities" multiple="true" data-ng-disabled="specialitiesForFaculties.length == 0" md-selected-text="convertSelectionToString(selectedSpecialities, 'Select Speciality')"  required="true">
+                            <md-option data-ng-repeat="speciality in specialitiesForFaculties" data-ng-value="speciality">
+                                <strong>{{ speciality.faculty_name }}</strong>:
+                                <i>{{speciality.name}}</i>
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-button class="md-raised md-primary" data-ng-click="renderGraph();" data-ng-disabled ="!mainForm.$dirty || mainForm.$invalid">Build graph</md-button>
                 </form>
             </md-content>
         </md-sidenav>
