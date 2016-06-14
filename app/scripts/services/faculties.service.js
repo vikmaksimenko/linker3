@@ -10,8 +10,7 @@ angular.module("diplomaApp")
             if(!universities || universities.length == 0) { return; }
             for(var i = 0; i < universities.length; i++) {
                 o.facultiesRef.orderByChild("university").equalTo(universities[i].$id).on("value", function (snapshot) {
-                    tmp = snapshot.val();
-
+                    var tmp = snapshot.val();
                     for (var property in tmp) {
                         if (tmp.hasOwnProperty(property)) {
                             tmp[property]["$id"] = property;

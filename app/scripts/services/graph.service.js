@@ -1,5 +1,5 @@
 angular.module("diplomaApp")
-    .factory('Graph', function($firebaseArray, FirebaseUrl, Themes, Subjects){
+    .factory('Graph', function($firebaseArray, FirebaseUrl, Themes, Positions, Specialities, Subjects, $mdDialog){
         var _generateGraphData = function() {
             var data = [];
             var themes_hash = {};
@@ -16,7 +16,8 @@ angular.module("diplomaApp")
                             data: {
                                 id: theme.$id,
                                 size: 10,
-                                name: theme.name
+                                name: theme.name,
+                                type: "theme"
                             }
                         };
                     }
@@ -39,7 +40,8 @@ angular.module("diplomaApp")
                     data: {
                         id: o.positions[i].$id,
                         size: 30,
-                        name: o.positions[i].name
+                        name: o.positions[i].name,
+                        type: "position"
                     }
                 });
                 _doThemesHash(themes_hash, o.positions[i]["themes"], o.positions[i].$id);
@@ -52,7 +54,8 @@ angular.module("diplomaApp")
                     data: {
                         id: o.specialities[i].$id,
                         size: 30,
-                        name: o.specialities[i].name
+                        name: o.specialities[i].name,
+                        type: "speciality"
                     }
                 });
                 if(o.specialities[i].hasOwnProperty("subjects")) {
@@ -67,11 +70,7 @@ angular.module("diplomaApp")
             }
 
             data = data.concat(_convertHashToArray(themes_hash));
-
-            console.log(data);
-
             return data;
-
         };
 
         function _convertHashToArray(tmp) {
@@ -81,9 +80,6 @@ angular.module("diplomaApp")
                     array.push(tmp[property]);
                 }
             }
-
-            console.log(array);
-
             return array;
         }
 
@@ -105,24 +101,60 @@ angular.module("diplomaApp")
                         selector: 'node.position',
                         style: {
                             "background-color": "#DD4C40",  // red
-                            "shape": "diamond"
+                            "shape": "roundrectangle"
                         }
                     }, {
                         selector: 'node.speciality',
                         style: {
                             "background-color": "#139F5A",  // green
-                            "shape": "diamond"
+                            "shape": "roundrectangle"
 
                         }
                     }
                 ]
 
             });
-            // var layout = cy.makeLayout({ name: 'breadthfirst' });
-            // layout.run();
-            // cy.center().center();
+            cy.on('tap', 'node', showNodeData);
             return cy;
         };
+
+        function showNodeData(evt) {
+            var node = evt.cyTarget;
+            console.log(node);
+            console.log(node.id());
+            console.log(node.data());
+            console.log(node);
+
+            cy.animate({
+                center: {
+                    eles: node
+                }
+            }, {
+                duration: 500
+            });
+
+            var nodeInfo;
+            if(node.data().type == "theme") {
+                nodeInfo = Themes.themes.$getRecord(node.id());
+            } else if(node.data().type == "position") {
+                nodeInfo = Positions.positions.$getRecord(node.id());
+            } else if(node.data().type == "speciality") {
+                nodeInfo = Specialities.specialities.$getRecord(node.id());
+            }
+
+            console.log(nodeInfo);
+
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#graph-controller')))
+                    .clickOutsideToClose(true)
+                    .title(nodeInfo.name)
+                    .textContent(nodeInfo.info || "No detailed info provided")
+                    .ariaLabel(nodeInfo.name + ' Info Dialog')
+                    .ok('Got it!')
+                    .targetEvent(evt)
+            );
+        }
 
         var o = {};
         o.graphShowed = false;
@@ -135,7 +167,7 @@ angular.module("diplomaApp")
             o.cy.remove("node");
             o.cy.add(graph);
             o.cy.center();
-            o.cy.makeLayout({ name: 'grid' }).run();
+            o.cy.makeLayout({ name: 'cose' }).run();
         };
 
         return o;
