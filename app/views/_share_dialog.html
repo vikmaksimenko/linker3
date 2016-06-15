@@ -1,0 +1,21 @@
+<md-dialog aria-label="Share Graph"  ng-cloak>
+    <form name="exportForm">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Share Graph</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="hide()">
+                    <md-icon class="material-icons step">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container style="width: 100%;" required>
+                    <label for="link">Link to Graph</label>
+                        <input ng-model="link" name="link" id="link" />
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

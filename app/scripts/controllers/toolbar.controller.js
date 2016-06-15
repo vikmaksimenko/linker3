@@ -17,6 +17,23 @@ angular.module('diplomaApp')
             });
         };
 
+        $scope.showShareDialog = function (ev) {
+            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+            $mdDialog.show({
+                controller: ShareDialogCtrl,
+                templateUrl: 'views/_share_dialog.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: useFullScreen
+            });
+            $scope.$watch(function() {
+                return $mdMedia('xs') || $mdMedia('sm');
+            }, function(wantsFullScreen) {
+                $scope.customFullscreen = (wantsFullScreen === true);
+            });
+        };
+
         $scope.showExportDialog = function(ev){
             var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
             $mdDialog.show({
@@ -40,7 +57,8 @@ angular.module('diplomaApp')
                 templateUrl: 'views/_auth_dialog.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
-                clickOutsideToClose:true
+                clickOutsideToClose:true,
+                fullscreen: useFullScreen
             });
             $scope.$watch(function() {
                 return $mdMedia('xs') || $mdMedia('sm');
@@ -76,6 +94,22 @@ function ExportDialogCtrl($scope, $mdDialog) {
             }
             link.click();
         }
+        $mdDialog.hide();
+    };
+}
+function ShareDialogCtrl($scope, $mdDialog, FirebaseUrl, Graph) {
+    function _initLink() {
+        var data =  {
+            specialities: Graph.specialities,
+            positions: Graph.positions
+        };
+        // return "https://linker3.firebaseapp.com/#/?graphParams=" + JSON.stringify(data);
+        return "http://localhost:4000/#/?graphParams=" + JSON.stringify(data);
+    }
+
+    $scope.link = _initLink();
+
+    $scope.hide = function() {
         $mdDialog.hide();
     };
 }

@@ -1,5 +1,5 @@
 angular.module('diplomaApp')
-    .controller('AppCtrl', function($scope, $state, Auth, $mdSidenav, $stateParams){
+    .controller('AppCtrl', function($scope, $state, Auth, $mdSidenav, $stateParams, Graph){
         $scope.openSidebar = function() {
             $mdSidenav('sidebar').toggle();
         };
@@ -9,5 +9,8 @@ angular.module('diplomaApp')
         };
 
 
-        console.log($stateParams);
+        if($stateParams.graphParams) {
+            Graph.specialities = $stateParams.graphParams.specialities;
+            Graph.positions = $stateParams.graphParams.positions;
+        }
     });
