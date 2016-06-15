@@ -13,13 +13,15 @@
             <div class="md-dialog-content">
                 <md-input-container style="width: 100%;" required>
                     <label>Choose export format</label>
-                    <md-select ng-model="selectedFormat" >
+                    <md-select name="format" ng-model="selectedFormat" >
                         <md-option ng-repeat="format in formats" value="{{format}}">
                             {{format}}
                         </md-option>
                     </md-select>
                 </md-input-container>
                 <div class="errors" data-ng-show="exportForm.name.$error.required" >
+                </div>
+                <div ng-messages="exportForm.format.$error" role="alert">
                     <div ng-message="required">Select Format</div>
                 </div>
             </div>
