@@ -13,7 +13,8 @@ angular
         'firebase',
         'angular-md5',
         'ui.router',
-        'ngMaterial'
+        'ngMaterial',
+        'ngMessages'
     ])
     .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
         $mdThemingProvider.theme('default')
@@ -21,14 +22,18 @@ angular
             .accentPalette('orange');
         $stateProvider
             .state('home', {
-                url: '/',
+                url: '/?graphParams',
                 templateUrl: '../views/home.html',
-                controller: 'AppCtrl as appCtrl'
-                // resolve: {
-                //     companies: function (Companies) {
-                //         return Companies.$loaded();
-                //     }
-                // }
+                controller: 'AppCtrl as appCtrl',
+                resolve: {
+                    requireNoAuth: function($state, Auth){
+                        return Auth.$requireAuth().then(function(auth){
+                            $state.go('home');
+                        }, function(error){
+                            return;
+                        });
+                    }
+                }
             })
             .state('login', {
                 url: '/login',
@@ -58,21 +63,21 @@ angular
                     }
                 }
             });
-            // .state('profile', {
-            //     url: '/profile',
-            //     resolve: {
-            //         auth: function($state, Users, Auth){
-            //             return Auth.$requireAuth().catch(function(){
-            //                 $state.go('home');
-            //             });
-            //         },
-            //         profile: function(Users, Auth){
-            //             return Auth.$requireAuth().then(function(auth){
-            //                 return Users.getProfile(auth.uid).$loaded();
-            //             });
-            //         }
-            //     }
-            // });
+        // .state('profile', {
+        //     url: '/profile',
+        //     resolve: {
+        //         auth: function($state, Users, Auth){
+        //             return Auth.$requireAuth().catch(function(){
+        //                 $state.go('home');
+        //             });
+        //         },
+        //         profile: function(Users, Auth){
+        //             return Auth.$requireAuth().then(function(auth){
+        //                 return Users.getProfile(auth.uid).$loaded();
+        //             });
+        //         }
+        //     }
+        // });
 
         $urlRouterProvider.otherwise('/');
     })

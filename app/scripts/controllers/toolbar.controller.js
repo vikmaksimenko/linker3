@@ -17,10 +17,6 @@ angular.module('diplomaApp')
             });
         };
 
-        $scope.showLoginDialog = function(ev){
-            console.log("login dialog");
-        };
-
         $scope.showExportDialog = function(ev){
             var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
             $mdDialog.show({
@@ -37,6 +33,21 @@ angular.module('diplomaApp')
                 $scope.customFullscreen = (wantsFullScreen === true);
             });
         };
+
+        $scope.showAuthDialog = function (ev) {
+            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+            $mdDialog.show({
+                templateUrl: 'views/_auth_dialog.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true
+            });
+            $scope.$watch(function() {
+                return $mdMedia('xs') || $mdMedia('sm');
+            }, function(wantsFullScreen) {
+                $scope.customFullscreen = (wantsFullScreen === true);
+            });
+        }
     });
 function AboutDialogController($scope, $mdDialog) {
     $scope.hide = function() {

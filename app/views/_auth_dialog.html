@@ -1,0 +1,83 @@
+<md-dialog aria-label="Account" data-ng-controller="AuthCtrl ">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Account</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon class="material-icons step">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="login">
+                <md-content class="md-padding">
+                    <form name="loginForm">
+                        <md-input-container class="md-block">
+                            <label for="email">Email</label>
+                            <input required type="email" id="email" name="clientEmail" ng-model="user.email"
+                                   minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                            <div ng-messages="loginForm.clientEmail.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                    Your email must be between 10 and 100 characters long and look like an e-mail address.
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label for="email">Password</label>
+                            <input required type="password" id="password" name="password" ng-model="user.password"
+                                   minlength="8" maxlength="100"/>
+                            <div ng-messages="loginForm.password.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                    Your password must be between 8 and 100 characters long
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                </md-content>
+                <footer class="pull-right">
+                    <md-button ng-click="login();" data-ng-disabled ="!loginForm.$dirty || loginForm.$invalid" >
+                        Save
+                    </md-button>
+                    <md-button ng-click="hide();">
+                        Cancel
+                    </md-button>
+                </footer>
+            </md-tab>
+            <md-tab label="register">
+                <md-content class="md-padding">
+                    <form name="registerForm">
+                        <md-input-container class="md-block">
+                            <label for="email">Email</label>
+                            <input required type="email" id="newEmail" name="newEmail" ng-model="user.email"
+                                   minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+                            <div ng-messages="registerForm.newEmail.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                    Your email must be between 10 and 100 characters long and look like an e-mail address.
+                                </div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label for="email">Password</label>
+                            <input required type="password" id="newPassword" name="newPassword" ng-model="user.password"
+                                   minlength="8" maxlength="100"/>
+                            <div ng-messages="registerForm.newPassword.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                                    Your password must be between 8 and 100 characters long
+                                </div>
+                            </div>
+                        </md-input-container>
+                    </form>
+                </md-content>
+                <footer class="pull-right">
+                    <md-button ng-click="register();" data-ng-disabled ="!registerForm.$dirty || registerForm.$invalid" >
+                        Save
+                    </md-button>
+                    <md-button ng-click="hide();">
+                        Cancel
+                    </md-button>
+                </footer>
+            </md-tab>
+        </md-tabs>
+    </md-dialog-content>
+</md-dialog>

@@ -118,7 +118,7 @@ angular.module("diplomaApp")
             return cy;
         };
 
-        function showNodeData(evt) {
+        var showNodeData = function(evt) {
             var node = evt.cyTarget;
                  cy.animate({
                 center: {
@@ -147,7 +147,7 @@ angular.module("diplomaApp")
                     .ok('Got it!')
                     .targetEvent(evt)
             );
-        }
+        };
 
         var o = {};
         o.graphShowed = false;
